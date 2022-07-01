@@ -13,3 +13,15 @@ all_text = [w for w in all_text if w!='']
 # 重複を許さない単語のリスト作成
 words = sorted(list(set(all_text)-{''}))
 # 上記を理解し、この続きを書いてください。
+
+# %%
+# 各単語の出現回数を記録した辞書wcountを作成
+wcount = {}
+for w in words:
+    wcount[w] = all_text.count(w)
+# 重複の無い出現回数のリストを作成(ソーティングも行う)
+value_list = sorted(list(set(wcount.values())))
+# 出現回数vごとに、そのv回出現する単語の数を印字
+for v in value_list:
+    no_words = len([w for w in wcount.keys() if wcount[w]==v])
+    print(v,'times -->',no_words,'words')
